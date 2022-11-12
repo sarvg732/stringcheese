@@ -1,0 +1,451 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.text.Font;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.Orientation;
+import javafx.scene.paint.Color;
+
+public class StringCheesePizzeria extends Application
+{
+  public void start(Stage primaryStage)
+  {
+    //Create a border pane as the root
+    BorderPane rootPane1 = new BorderPane();
+
+    //centerPane1 is a GridPane, it contains 3 labels and 3 text fields
+    GridPane centerPane1 = new GridPane();
+	centerPane1.setAlignment(Pos.CENTER);
+    centerPane1.setPadding(new Insets(10, 10, 10, 10));
+    centerPane1.setHgap(5);
+    centerPane1.setVgap(10);
+
+	//Create 3 labels
+    Label Username = new Label("USERNAME");
+    Label Password = new Label("PASSWORD");
+    Label Welcome = new Label("WELCOME TO STRING CHEESE PIZZERIA");
+
+    Welcome.setFont(new Font("Arial", 30));
+    Welcome.setTextFill(Color.RED);
+    
+    //Create 3 text fields
+    TextField UsernameField = new TextField();
+    TextField PassField = new TextField();
+
+   	//add the 3 labels and 3 text fields accordingly
+    centerPane1.add(Username, 0, 4);
+    centerPane1.add(UsernameField, 0, 5);
+    centerPane1.add(Password, 0, 6);
+    centerPane1.add(PassField, 0, 7);
+    centerPane1.add(Welcome,0, 0);
+
+ 	//eastPane1 is a vertical TilePane, it contains 4 buttons
+	TilePane eastPane1 = new TilePane(Orientation.VERTICAL);
+	eastPane1.setAlignment(Pos.CENTER);
+    eastPane1.setPadding(new Insets(10, 10, 10, 10));
+
+ 	//southPane1 is a horizontal TilePane, it contains 3 buttons
+	TilePane southPane1 = new TilePane(Orientation.HORIZONTAL);
+	southPane1.setAlignment(Pos.CENTER);
+
+    //create three buttons
+    Button Login = new Button("Login");
+    Button signLater = new Button("Sign-In Later");
+
+	//To enable the buttons to be resized to the size of the tile,
+    Login.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+	signLater.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+	//set the horizontal gap between above 3 buttons
+	southPane1.setHgap(20.0);
+	southPane1.getChildren().addAll(Login,signLater);
+    southPane1.setPadding(new Insets(10, 10, 10, 10));
+
+    //Place centerPane1, eastPane1 and southPane1 inside the rootPane1
+    rootPane1.setCenter(centerPane1);
+    rootPane1.setRight(eastPane1);
+    rootPane1.setBottom(southPane1);
+
+    // Create a scene and place it in the stage
+    Scene scene1 = new Scene(rootPane1, 500, 600);
+    primaryStage.setTitle("Nest Pane Demo"); // Set the stage title
+    primaryStage.setScene(scene1); // Place the scene in the stage
+    primaryStage.show(); // Display the stage
+    
+    
+    signLater.setOnAction((ActionEvent e) -> {
+    	
+    	BorderPane rootPane2 = new BorderPane();
+
+        //centerPane is a GridPane, it contains 3 labels and 3 text fields
+        GridPane centerPane2 = new GridPane();
+        centerPane2.setAlignment(Pos.CENTER);
+        centerPane2.setPadding(new Insets(20, 20, 20, 20));
+        centerPane2.setHgap(5);
+        centerPane2.setVgap(10);
+        //Label
+        Label type = new Label("Pick a Pizza Type");
+        centerPane2.add(type, 1, 0);
+
+        TilePane eastPane2 = new TilePane(Orientation.VERTICAL);
+        eastPane2.setAlignment(Pos.CENTER);
+        eastPane2.setPadding(new Insets(20, 20, 20, 20));
+
+    	TilePane topPane2 = new TilePane(Orientation.HORIZONTAL);
+    	eastPane2.setAlignment(Pos.CENTER);
+        eastPane2.setPadding(new Insets(20, 20, 20, 20));
+        
+           
+           Button cheese = new Button("Cheese");
+           Button veggie = new Button("Veggie");
+           Button pepperoni = new Button("Pepperoni");
+           Button backToLogin = new Button("Back");
+           Button nextToTop = new Button("Next");
+
+           //To enable the buttons to be resized to the size of the tile,
+           cheese.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+           veggie.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+           pepperoni.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+           backToLogin.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+           nextToTop.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+    	
+    	 eastPane2.setVgap(30.0);
+         topPane2.setHgap(50.0);
+        
+        eastPane2.getChildren().addAll(cheese,veggie,pepperoni);
+        topPane2.getChildren().addAll(backToLogin, type, nextToTop);
+        
+        rootPane2.setTop(topPane2);
+        rootPane2.setCenter(eastPane2);
+        
+        // Create a scene and place it in the stage
+        Scene scene2 = new Scene(rootPane2, 500, 600);
+        primaryStage.setTitle("Pizza Type"); // Set the stage title
+        primaryStage.setScene(scene2); // Place the scene in the stage
+        primaryStage.show(); // Display the stage
+    	
+        backToLogin.setOnAction((ActionEvent f) -> { 
+        	primaryStage.setScene(scene1);
+        	
+        });
+        
+        nextToTop.setOnAction((ActionEvent g) -> { 
+        	
+        	 BorderPane rootPane3 = new BorderPane();
+
+        	    //centerPane is a GridPane, it contains 3 labels and 3 text fields
+        	    GridPane centerPane3 = new GridPane();
+        		centerPane3.setAlignment(Pos.CENTER);
+        	    centerPane3.setPadding(new Insets(10, 10, 10, 10));
+        	    centerPane3.setHgap(5);
+        	    centerPane3.setVgap(10);
+
+        	    //Label
+        	    Label toppings = new Label("Choose pizza toppings");
+        	    centerPane3.add(toppings, 1, 0);
+
+        	    TilePane eastPane3 = new TilePane(Orientation.VERTICAL);
+        		eastPane3.setAlignment(Pos.CENTER);
+        	    eastPane3.setPadding(new Insets(20, 20, 20, 20));
+        	    
+        	    TilePane topPane3 = new TilePane(Orientation.HORIZONTAL);
+        		eastPane3.setAlignment(Pos.CENTER);
+        	    eastPane3.setPadding(new Insets(20, 20, 20, 20));
+
+
+        	    //create four buttons
+        	    Button xtraCheese = new Button("Extra Cheese");
+        	    Button mushrooms = new Button("Mushrooms");
+        	    Button onions = new Button("Onions");
+        	    Button olives = new Button("Olives");
+        	    Button none = new Button("None");
+        	    Button toCheck = new Button("Proceed to Checkout");
+        	    Button backToType = new Button("Back");
+//        	    Button nextToCheck = new Button("Next");
+
+        	    //To enable the buttons to be resized to the size of the tile,
+        	    xtraCheese.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    mushrooms.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    onions.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    olives.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    none.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    toCheck.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    backToType.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	 //   nextToCheck.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        	    //set the vertical gap between buttons
+        	    eastPane3.setVgap(30.0);
+        	    topPane3.setHgap(30.0);
+        	    
+        	    eastPane3.getChildren().addAll(xtraCheese, mushrooms, onions, olives, none, toCheck);
+        	    topPane3.getChildren().addAll(backToType, toppings);
+        	    rootPane3.setTop(topPane3);
+        	    rootPane3.setCenter(eastPane3);
+        	    // Create a scene and place it in the stage
+        	    Scene scene3 = new Scene(rootPane3, 600, 600);
+        	    primaryStage.setTitle("Pizza Toppings"); // Set the stage title
+        	    primaryStage.setScene(scene3); // Place the scene in the stage
+        	    primaryStage.show(); // Display the stage
+        	
+        	    backToType.setOnAction((ActionEvent h) -> { 
+        	    	
+                	primaryStage.setScene(scene2);
+                	
+                });
+        	    
+        	    toCheck.setOnAction((ActionEvent j) -> {
+        	    	
+        	    	 BorderPane rootPane4 = new BorderPane();
+
+        	    	    //centerPane is a GridPane, it contains 3 labels and 3 text fields
+        	    	    GridPane centerPane4 = new GridPane();
+        	    		centerPane4.setAlignment(Pos.CENTER);
+        	    	    centerPane4.setPadding(new Insets(10, 10, 10, 10));
+        	    	    centerPane4.setHgap(5);
+        	    	    centerPane4.setVgap(10);
+
+        	    		//Create 3 labels
+        	    	    Label OrderSum= new Label("Order Summary");
+        	    	    Label checkout= new Label("CHECKOUT");
+        	    	    checkout.setTextFill(Color.RED);
+        	    	    OrderSum.setTextFill(Color.BLUE);
+
+
+        	    	    Label space= new Label("              ");
+        	    	    Label space1= new Label("              ");
+        	    	    Label space2= new Label("              ");
+        	    	    Label space3= new Label("              ");
+
+
+
+        	    	    //Label label = new Label("This is a label");
+        	    	    //label.setMinWidth(50);
+        	    	    //label.setMinHeight(50);
+
+        	    	    checkout.setFont(new Font("Arial", 30));
+        	    	    OrderSum.setFont(new Font("Cambria", 20));
+        	    	    
+        	    	    Label fName = new Label("Item");
+        	    	    Label mInitial = new Label("Price");
+        	    	    Label lName = new Label("Quantity");
+        	    	    Label TotalPrice = new Label("Total Price");
+        	    	    
+        	    	    fName.setFont(new Font("Cambria", 20));
+        	    	    mInitial.setFont(new Font("Cambria", 20));
+        	    	    lName.setFont(new Font("Cambria", 20));
+        	    	    TotalPrice.setFont(new Font("Cambria", 20));
+        	    	    
+
+        	    	    //Create 3 text fields
+
+        	    	    TextField fNameField1 = new TextField();
+        	    	    TextField fNameField2 = new TextField();
+        	    	    TextField fNameField3 = new TextField();
+        	    	    TextField mInitField1 = new TextField();
+        	    	    TextField mInitField2 = new TextField();
+        	    	    TextField mInitField3 = new TextField();
+        	    	    TextField lNameField1 = new TextField();
+        	    	    TextField lNameField2 = new TextField();
+        	    	    TextField lNameField3 = new TextField();
+
+        	    	  
+        	    	    TextField lNameField = new TextField();
+        	    	    TextField TotalPriceField = new TextField();
+        	    	   
+
+        	    	   	//add the 3 labels and 3 text fields accordingly
+        	    	    centerPane4.add(OrderSum, 2, 1);
+
+        	    	    centerPane4.add(checkout, 2, 0);
+
+        	    	    centerPane4.add(fName, 1, 4);
+        	    	    centerPane4.add(fNameField1, 1, 5);
+        	    	    centerPane4.add(fNameField2, 1, 6);
+        	    	    centerPane4.add(fNameField3, 1, 7);
+        	    	    
+        	    	    
+        	    	    centerPane4.add(mInitial, 2, 4);
+        	    	    centerPane4.add(mInitField1 , 2, 5);
+        	    	    centerPane4.add(mInitField2 , 2, 6);
+        	    	    centerPane4.add(mInitField3 , 2, 7);
+
+        	    	    centerPane4.add(space, 2, 8);
+        	    	    centerPane4.add(space1, 2, 3);
+        	    	    centerPane4.add(space2, 1, 3);
+        	    	    centerPane4.add(space3, 3, 3);
+        	    	    
+        	    	   centerPane4.add(lName, 3, 4);
+        	    	   centerPane4.add(lNameField1, 3, 5);
+        	    	   centerPane4.add(lNameField2, 3, 6);
+        	    	   centerPane4.add(lNameField3, 3, 7);
+
+        	    	 
+        	    	    centerPane4.add(TotalPrice, 2, 9);
+        	    	    centerPane4.add(TotalPriceField, 2, 10);
+
+        	    	 	//eastPane is a vertical TilePane, it contains 4 buttons
+        	    		TilePane eastPane4 = new TilePane(Orientation.VERTICAL);
+        	    		eastPane4.setAlignment(Pos.CENTER);
+        	    	    eastPane4.setPadding(new Insets(15, 15, 15, 15));
+
+        	    	 	//southPane is a horizontal TilePane, it contains 3 buttons
+        	    		TilePane southPane4 = new TilePane(Orientation.HORIZONTAL);
+        	    		southPane4.setAlignment(Pos.CENTER);
+
+        	    	    //create three buttons
+        	    	    Button confirm = new Button("Confirm Order");
+        	    	    Button goBack = new Button("I need to go back");
+
+        	    		//To enable the buttons to be resized to the size of the tile,
+        	    	    goBack.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    		confirm.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        	    		//set the horizontal gap between above 3 buttons
+        	    		southPane4.setHgap(20.0);
+        	    		southPane4.getChildren().addAll(confirm, goBack);
+        	    	    southPane4.setPadding(new Insets(10, 10, 10, 10));
+
+        	    	    //Place centerPane, eastPane and southPane inside the rootPane
+        	    	    rootPane4.setCenter(centerPane4);
+        	    	    rootPane4.setRight(eastPane4);
+        	    	    rootPane4.setBottom(southPane4);
+
+        	    	    // Create a scene and place it in the stage
+        	    	    Scene scene4 = new Scene(rootPane4, 500, 600);
+        	    	    primaryStage.setTitle("Nest Pane Demo"); // Set the stage title
+        	    	    primaryStage.setScene(scene4); // Place the scene in the stage
+        	    	    primaryStage.show(); // Display the stage   
+        	    	    
+        	    	    goBack.setOnAction((ActionEvent k) -> {
+        	    	    	
+        	    	    	primaryStage.setScene(scene3);
+        	    	    	
+        	    	    });
+        	    	    
+        	    	    confirm.setOnAction((ActionEvent m) -> {
+        	    	    	
+        	    	    //	if (signLater.setOnAction(ActionEvent q)) {
+        	
+        	    	    	
+        	    	    	BorderPane basePane5 = new BorderPane();
+        	    			
+        	    			GridPane pay1Pane = new GridPane();
+        	    			GridPane pay2Pane = new GridPane();
+        	    			
+        	    			pay1Pane.setAlignment(Pos.CENTER);
+        	    		    pay1Pane.setPadding(new Insets(20, 20, 20, 20));
+        	    		    pay1Pane.setHgap(10);
+        	    		    pay1Pane.setVgap(20);
+        	    		    
+        	    		    pay2Pane.setAlignment(Pos.CENTER);
+        	    		    pay2Pane.setPadding(new Insets(20, 20, 20, 20));
+        	    		    pay2Pane.setHgap(10);
+        	    		    pay2Pane.setVgap(20);
+        	    		
+        	    		    Label paymentTitle = new Label("PAYMENT");
+        	    		    // paymentTitle.setTextFill(Color.RED);
+        	    		    paymentTitle.setTextFill(Color.CRIMSON);
+        	    		    paymentTitle.setFont(new Font("Cambria", 30));
+        	    		    pay1Pane.add(paymentTitle, 1, 0);
+        	    		    
+        	    		    Label whereBill = new Label("Where would you like it billed?");
+        	    		    pay1Pane.add(whereBill, 1, 1);
+        	    		    
+        	    		  
+        	    		    RadioButton studAccPay = new RadioButton();
+        	    		    studAccPay.setText("Student account ending in *");
+        	    		   // payPane.add(studAccPay, 1, 3);
+        	    		    
+        	    		    RadioButton otherPay = new RadioButton();
+        	    		    otherPay.setText("Other Form of Payment");
+        	    		   // payPane.add(otherPay, 1, 4);
+        	    		    
+        	    		    RadioButton cashPay = new RadioButton();
+        	    		    cashPay.setText("Cash when picking up the pizza");
+        	    		  //  payPane.add(cashPay, 1, 5);
+        	    		    
+        	    		   ToggleGroup selectOne = new ToggleGroup();
+        	    		   studAccPay.setToggleGroup(selectOne);
+        	    		   otherPay.setToggleGroup(selectOne);
+        	    		   cashPay.setToggleGroup(selectOne);
+        	    		    
+        	    		    TilePane optionsPane = new TilePane(Orientation.VERTICAL);
+        	    		    optionsPane.setHgap(100.0);
+        	    		  //  optionsPane.setVgap(50.0);
+        	    			optionsPane.getChildren().addAll(studAccPay,otherPay,cashPay);
+        	    		    optionsPane.setPadding(new Insets(50, 50, 50, 50));
+        	    		    
+        	    		    
+        	    		    Label status = new Label("STATUS");
+        	    		    status.setTextFill(Color.BLUE);
+        	    		    status.setFont(new Font("Cambria", 20));
+        	    		    pay2Pane.add(status, 1, 7);
+        	    		    
+        	    		    
+        	    		    Label statusInfo = new Label("(STATUS will change to ACCEPTED, READY TO COOK, COOKING, READY)");
+        	    		    statusInfo.setFont(new Font("Verdana", 11));
+        	    		    pay2Pane.add(statusInfo, 1, 9);
+        	    		    
+        	    		    Button back =  new Button("GO BACK");
+        	    		    back.setFont(new Font("Helvetica", 15));
+        	    		    back.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    		    back.setStyle("-fx-text-fill: maroon; -fx-background-color: gold");
+        	    		    pay1Pane.getChildren().add(back);
+        	    		    
+        	    		    
+        	    		    Button logOut = new Button("LOG OUT");
+        	    		    logOut.setFont(new Font("Helvetica", 15));
+        	    		    logOut.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        	    		    pay2Pane.add(logOut, 1, 11);
+        	    		    
+        	    		    basePane5.setTop(pay1Pane);
+        	    		    basePane5.setCenter(optionsPane);
+        	    		    basePane5.setBottom(pay2Pane);
+        	    		    
+        	    		    Scene scene5 = new Scene(basePane5, 500, 600);
+        	    		  //  scene.setFill(Color.YELLOW);
+        	    		    primaryStage.setTitle("Payment Page"); // Set the stage title
+        	    		    primaryStage.setScene(scene5); // Place the scene in the stage
+        	    		    primaryStage.show();
+        	    		    
+        	    	        back.setOnAction((ActionEvent n) -> { 
+        	    	        	
+        	    	        	primaryStage.setScene(scene4);
+        	    	        	
+        	    	        });
+        	    	        
+        	    	        logOut.setOnAction((ActionEvent p) -> {
+        	    	        	
+        	    	        	primaryStage.setScene(scene1);
+        	    	        	
+        	    	        });
+        	    	    	
+        	    	    	
+        	    	    });
+        	    	
+        	    });
+        	    
+        });
+    	
+    });
+    
+    
+    
+  }
+  
+  
+  public static void main(String[] args) {
+      launch(args);
+  }
+}
+
