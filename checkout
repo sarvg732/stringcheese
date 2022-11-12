@@ -148,7 +148,7 @@ public class NestedPaneDemoTwo extends Application
     rootPane.setBottom(southPane);
 
     // Create a scene and place it in the stage
-    Scene scene = new Scene(rootPane, 700, 700);
+    Scene scene = new Scene(rootPane, 500, 600);
     primaryStage.setTitle("Nest Pane Demo"); // Set the stage title
     primaryStage.setScene(scene); // Place the scene in the stage
     primaryStage.show(); // Display the stage
