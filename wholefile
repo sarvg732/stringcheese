@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -83,8 +84,14 @@ public class StringCheesePizzeria extends Application
     primaryStage.show(); // Display the stage
     
     
-    signLater.setOnAction((ActionEvent e) -> {
+    boolean ifLogin = false;
+    boolean ifLater;
+    boolean goProcess = false;
+   
+        signLater.setOnAction((ActionEvent e) -> {
     	
+        //	ifLogin = true;
+        	
     	BorderPane rootPane2 = new BorderPane();
 
         //centerPane is a GridPane, it contains 3 labels and 3 text fields
@@ -96,7 +103,7 @@ public class StringCheesePizzeria extends Application
         //Label
         Label type = new Label("Pick a Pizza Type");
         centerPane2.add(type, 1, 0);
-
+ 
         TilePane eastPane2 = new TilePane(Orientation.VERTICAL);
         eastPane2.setAlignment(Pos.CENTER);
         eastPane2.setPadding(new Insets(20, 20, 20, 20));
@@ -104,8 +111,7 @@ public class StringCheesePizzeria extends Application
     	TilePane topPane2 = new TilePane(Orientation.HORIZONTAL);
     	eastPane2.setAlignment(Pos.CENTER);
         eastPane2.setPadding(new Insets(20, 20, 20, 20));
-        
-           
+       
            Button cheese = new Button("Cheese");
            Button veggie = new Button("Veggie");
            Button pepperoni = new Button("Pepperoni");
@@ -136,7 +142,6 @@ public class StringCheesePizzeria extends Application
     	
         backToLogin.setOnAction((ActionEvent f) -> { 
         	primaryStage.setScene(scene1);
-        	
         });
         
         nextToTop.setOnAction((ActionEvent g) -> { 
@@ -200,7 +205,6 @@ public class StringCheesePizzeria extends Application
         	    backToType.setOnAction((ActionEvent h) -> { 
         	    	
                 	primaryStage.setScene(scene2);
-                	
                 });
         	    
         	    toCheck.setOnAction((ActionEvent j) -> {
@@ -220,17 +224,10 @@ public class StringCheesePizzeria extends Application
         	    	    checkout.setTextFill(Color.RED);
         	    	    OrderSum.setTextFill(Color.BLUE);
 
-
-        	    	    Label space= new Label("              ");
-        	    	    Label space1= new Label("              ");
-        	    	    Label space2= new Label("              ");
-        	    	    Label space3= new Label("              ");
-
-
-
-        	    	    //Label label = new Label("This is a label");
-        	    	    //label.setMinWidth(50);
-        	    	    //label.setMinHeight(50);
+        	    	    Label space = new Label("              ");
+        	    	    Label space1 = new Label("              ");
+        	    	    Label space2 = new Label("              ");
+        	    	    Label space3 = new Label("              ");
 
         	    	    checkout.setFont(new Font("Arial", 30));
         	    	    OrderSum.setFont(new Font("Cambria", 20));
@@ -244,9 +241,6 @@ public class StringCheesePizzeria extends Application
         	    	    mInitial.setFont(new Font("Cambria", 20));
         	    	    lName.setFont(new Font("Cambria", 20));
         	    	    TotalPrice.setFont(new Font("Cambria", 20));
-        	    	    
-
-        	    	    //Create 3 text fields
 
         	    	    TextField fNameField1 = new TextField();
         	    	    TextField fNameField2 = new TextField();
@@ -288,8 +282,7 @@ public class StringCheesePizzeria extends Application
         	    	   centerPane4.add(lNameField1, 3, 5);
         	    	   centerPane4.add(lNameField2, 3, 6);
         	    	   centerPane4.add(lNameField3, 3, 7);
-
-        	    	 
+			   
         	    	    centerPane4.add(TotalPrice, 2, 9);
         	    	    centerPane4.add(TotalPriceField, 2, 10);
 
@@ -329,7 +322,6 @@ public class StringCheesePizzeria extends Application
         	    	    goBack.setOnAction((ActionEvent k) -> {
         	    	    	
         	    	    	primaryStage.setScene(scene3);
-        	    	    	
         	    	    });
         	    	    
         	    	    confirm.setOnAction((ActionEvent m) -> {
@@ -337,7 +329,7 @@ public class StringCheesePizzeria extends Application
         	    	    //	if (signLater.setOnAction(ActionEvent q)) {
         	
         	    	    	
-        	    	    	BorderPane basePane5 = new BorderPane();
+        	    	    	BorderPane basePane = new BorderPane();
         	    			
         	    			GridPane pay1Pane = new GridPane();
         	    			GridPane pay2Pane = new GridPane();
@@ -359,18 +351,23 @@ public class StringCheesePizzeria extends Application
         	    		    pay1Pane.add(paymentTitle, 1, 0);
         	    		    
         	    		    Label whereBill = new Label("Where would you like it billed?");
+        	    		    whereBill.setFont(new Font("Cambria", 17));
+        	    		    whereBill.setTextFill(Color.DARKRED);
         	    		    pay1Pane.add(whereBill, 1, 1);
         	    		    
         	    		  
         	    		    RadioButton studAccPay = new RadioButton();
-        	    		    studAccPay.setText("Student account ending in *");
+        	    		    studAccPay.setFont(new Font("Cambria", 15));
+        	    		    studAccPay.setText("Student account ending in **** ");
         	    		   // payPane.add(studAccPay, 1, 3);
         	    		    
         	    		    RadioButton otherPay = new RadioButton();
-        	    		    otherPay.setText("Other Form of Payment");
+        	    		    otherPay.setFont(new Font("Cambria", 15));
+        	    		    otherPay.setText("Other Form of Payment		    ");
         	    		   // payPane.add(otherPay, 1, 4);
         	    		    
         	    		    RadioButton cashPay = new RadioButton();
+        	    		    cashPay.setFont(new Font("Cambria", 15));
         	    		    cashPay.setText("Cash when picking up the pizza");
         	    		  //  payPane.add(cashPay, 1, 5);
         	    		    
@@ -379,20 +376,21 @@ public class StringCheesePizzeria extends Application
         	    		   otherPay.setToggleGroup(selectOne);
         	    		   cashPay.setToggleGroup(selectOne);
         	    		    
-        	    		    TilePane optionsPane = new TilePane(Orientation.VERTICAL);
+        	    		    TilePane optionsPane = new TilePane(Orientation.HORIZONTAL);
         	    		    optionsPane.setHgap(100.0);
-        	    		  //  optionsPane.setVgap(50.0);
+        	    		    optionsPane.setAlignment(Pos.CENTER_LEFT);
+        	    		    optionsPane.setVgap(20.0);
         	    			optionsPane.getChildren().addAll(studAccPay,otherPay,cashPay);
-        	    		    optionsPane.setPadding(new Insets(50, 50, 50, 50));
+        	    		    optionsPane.setPadding(new Insets(50, 50, 10, 125));
         	    		    
         	    		    
-        	    		    Label status = new Label("STATUS");
+        	    		    Label status = new Label("STATUS: Waiting for Payment");
         	    		    status.setTextFill(Color.BLUE);
         	    		    status.setFont(new Font("Cambria", 20));
         	    		    pay2Pane.add(status, 1, 7);
         	    		    
         	    		    
-        	    		    Label statusInfo = new Label("(STATUS will change to ACCEPTED, READY TO COOK, COOKING, READY)");
+        	    		    Label statusInfo = new Label("(STATUS will change to PAYMENT ACCEPTED, READY TO COOK, COOKING, READY)");
         	    		    statusInfo.setFont(new Font("Verdana", 11));
         	    		    pay2Pane.add(statusInfo, 1, 9);
         	    		    
@@ -403,16 +401,22 @@ public class StringCheesePizzeria extends Application
         	    		    pay1Pane.getChildren().add(back);
         	    		    
         	    		    
+        	    		    if ((cashPay.isSelected()) || (otherPay.isSelected()) ||(studAccPay.isSelected())) {
+        	    		    	
+        	    		    	status.setText("STATUS: PAYMENT ACCEPTED");
+        	    		    	
+        	    		    }
+        	    		    
         	    		    Button logOut = new Button("LOG OUT");
         	    		    logOut.setFont(new Font("Helvetica", 15));
         	    		    logOut.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         	    		    pay2Pane.add(logOut, 1, 11);
         	    		    
-        	    		    basePane5.setTop(pay1Pane);
-        	    		    basePane5.setCenter(optionsPane);
-        	    		    basePane5.setBottom(pay2Pane);
+        	    		    basePane.setTop(pay1Pane);
+        	    		    basePane.setCenter(optionsPane);
+        	    		    basePane.setBottom(pay2Pane);
         	    		    
-        	    		    Scene scene5 = new Scene(basePane5, 500, 600);
+        	    		    Scene scene5 = new Scene(basePane, 500, 600);
         	    		  //  scene.setFill(Color.YELLOW);
         	    		    primaryStage.setTitle("Payment Page"); // Set the stage title
         	    		    primaryStage.setScene(scene5); // Place the scene in the stage
@@ -421,26 +425,20 @@ public class StringCheesePizzeria extends Application
         	    	        back.setOnAction((ActionEvent n) -> { 
         	    	        	
         	    	        	primaryStage.setScene(scene4);
-        	    	        	
         	    	        });
         	    	        
         	    	        logOut.setOnAction((ActionEvent p) -> {
         	    	        	
         	    	        	primaryStage.setScene(scene1);
-        	    	        	
         	    	        });
-        	    	    	
         	    	    	
         	    	    });
         	    	
-        	    });
-        	    
+        	    });    
         });
     	
     });
-    
-    
-    
+  
   }
   
   
@@ -448,4 +446,3 @@ public class StringCheesePizzeria extends Application
       launch(args);
   }
 }
-
