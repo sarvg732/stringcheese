@@ -26,6 +26,7 @@ public class PizzaType extends Application
     centerPane.setVgap(10);
     //Label
     Label type = new Label("Pick a Pizza Type");
+    type.setFont(new Font("Cambria", 20));
     centerPane.add(type, 1, 0);
 
     TilePane eastPane = new TilePane(Orientation.VERTICAL);
