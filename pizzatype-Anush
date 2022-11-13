@@ -1,3 +1,4 @@
+package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -7,9 +8,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.Font;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Orientation;
+import javafx.scene.paint.Color;
+
+
 
 public class PizzaType extends Application
 {
@@ -21,21 +26,21 @@ public class PizzaType extends Application
     //centerPane is a GridPane, it contains 3 labels and 3 text fields
     GridPane centerPane = new GridPane();
     centerPane.setAlignment(Pos.CENTER);
-    centerPane.setPadding(new Insets(20, 20, 20, 20));
+    centerPane.setPadding(new Insets(10, 10, 10, 10));
     centerPane.setHgap(5);
     centerPane.setVgap(10);
     //Label
     Label type = new Label("Pick a Pizza Type");
-    type.setFont(new Font("Cambria", 20));
+    type.setTextFill(Color.RED);
+    type.setFont(new Font("Arial", 30));
     centerPane.add(type, 1, 0);
 
     TilePane eastPane = new TilePane(Orientation.VERTICAL);
     eastPane.setAlignment(Pos.CENTER);
     eastPane.setPadding(new Insets(20, 20, 20, 20));
 
-	TilePane topPane = new TilePane(Orientation.HORIZONTAL);
-	eastPane.setAlignment(Pos.CENTER);
-    eastPane.setPadding(new Insets(20, 20, 20, 20));
+    TilePane southPane = new TilePane(Orientation.HORIZONTAL);
+    southPane.setAlignment(Pos.CENTER);
     
        
        Button button1 = new Button("Cheese");
@@ -51,24 +56,22 @@ public class PizzaType extends Application
        button4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
        button5.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 	
-	 eastPane.setVgap(30.0);
-     topPane.setHgap(50.0);
+	  eastPane.setVgap(30.0);
+     southPane.setHgap(50.0);
     
-    eastPane.getChildren().addAll(button1,button2,button3);
-    topPane.getChildren().addAll(button4, type, button5);
+    eastPane.getChildren().addAll(button1,button2,button3, button4, button5);
+    southPane.getChildren().addAll(type);
     
-    rootPane.setTop(topPane);
+    rootPane.setTop(southPane);
     rootPane.setCenter(eastPane);
     
     // Create a scene and place it in the stage
-    Scene scene = new Scene(rootPane, 600, 600);
+    Scene scene = new Scene(rootPane, 500, 600);
     primaryStage.setTitle("Pizza Type"); // Set the stage title
     primaryStage.setScene(scene); // Place the scene in the stage
     primaryStage.show(); // Display the stage
   }
   public static void main(String[] args) {
-      launch(args);
-  }
-
+		launch(args);
+	}
 }
-
