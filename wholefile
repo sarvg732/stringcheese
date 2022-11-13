@@ -179,7 +179,7 @@ public class StringCheesePizzeria extends Application
         	    //Label
         	    Label toppings = new Label("Choose pizza toppings");
 		     toppings.setTextFill(Color.RED);
-    		     toppings.setFont(new Font("Cambria", 17));
+    		     toppings.setFont(new Font("Cambria", 15));
         	    centerPane3.add(toppings, 1, 0);
 
         	    TilePane eastPane3 = new TilePane(Orientation.VERTICAL);
