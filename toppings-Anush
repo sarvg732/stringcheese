@@ -1,3 +1,4 @@
+package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -7,12 +8,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.Font;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Orientation;
+import javafx.scene.paint.Color;
 
 
-public class PizzaType extends Application
+public class PizzaToppings extends Application
 {
   public void start(Stage primaryStage)
   {
@@ -28,15 +31,16 @@ public class PizzaType extends Application
 
     //Label
     Label toppings = new Label("Choose pizza toppings");
-    centerPane.add(toppings, 1, 0);
+    toppings.setTextFill(Color.RED);
+    toppings.setFont(new Font("Arial", 30));
+    centerPane.add(toppings, 0, 0);
 
     TilePane eastPane = new TilePane(Orientation.VERTICAL);
 	eastPane.setAlignment(Pos.CENTER);
-    eastPane.setPadding(new Insets(20, 20, 20, 20));
+    eastPane.setPadding(new Insets(10, 10, 10, 10));
     
-    TilePane topPane = new TilePane(Orientation.HORIZONTAL);
-	eastPane.setAlignment(Pos.CENTER);
-    eastPane.setPadding(new Insets(20, 20, 20, 20));
+    TilePane southPane = new TilePane(Orientation.HORIZONTAL);
+    southPane.setAlignment(Pos.CENTER);
 
 
     //create four buttons
@@ -61,17 +65,19 @@ public class PizzaType extends Application
 
     //set the vertical gap between buttons
     eastPane.setVgap(30.0);
-    topPane.setHgap(30.0);
+    southPane.setHgap(30.0);
     
-    eastPane.getChildren().addAll(button1,button2,button3,button4,button5,button6);
-    topPane.getChildren().addAll(button7, toppings, button8);
-    rootPane.setTop(topPane);
+    eastPane.getChildren().addAll(button1,button2,button3,button4,button5,button6,button7,button8);
+    southPane.getChildren().addAll(toppings);
+    rootPane.setTop(southPane);
     rootPane.setCenter(eastPane);
     // Create a scene and place it in the stage
-    Scene scene = new Scene(rootPane, 600, 600);
+    Scene scene = new Scene(rootPane, 500, 600);
     primaryStage.setTitle("Pizza Toppings"); // Set the stage title
     primaryStage.setScene(scene); // Place the scene in the stage
     primaryStage.show(); // Display the stage
   }
+  public static void main(String[] args) {
+		launch(args);
+	}
 }
-
