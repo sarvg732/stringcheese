@@ -32,7 +32,7 @@ public class PizzaToppings extends Application
     //Label
     Label toppings = new Label("Choose pizza toppings");
     toppings.setTextFill(Color.RED);
-    toppings.setFont(new Font("Arial", 30));
+    toppings.setFont(new Font("Cambria", 15));
     centerPane.add(toppings, 0, 0);
 
     TilePane eastPane = new TilePane(Orientation.VERTICAL);
