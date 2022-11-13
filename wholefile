@@ -71,11 +71,15 @@ public class StringCheesePizzeria extends Application
 	southPane1.setHgap(20.0);
 	southPane1.getChildren().addAll(Login,signLater);
     southPane1.setPadding(new Insets(10, 10, 10, 10));
+    
+    Label error = new Label("Please input a valid ASU username and password, or click 'Sign-In Later' ");
 
     //Place centerPane1, eastPane1 and southPane1 inside the rootPane1
     rootPane1.setCenter(centerPane1);
     rootPane1.setRight(eastPane1);
     rootPane1.setBottom(southPane1);
+    
+    
 
     // Create a scene and place it in the stage
     Scene scene1 = new Scene(rootPane1, 500, 600);
@@ -88,6 +92,19 @@ public class StringCheesePizzeria extends Application
     boolean ifLater;
     boolean goProcess = false;
    
+    
+    	Login.setOnAction((ActionEvent d) -> {
+    		
+    		if((UsernameField.getText().isEmpty()) || (PassField.getText().isEmpty())) {
+    			
+    			BorderPane errorPane = new BorderPane();
+    			errorPane.setCenter(error);
+    			Scene errorScene = new Scene(errorPane, 200, 200);
+    			
+    		}
+    		
+    	});
+    
         signLater.setOnAction((ActionEvent e) -> {
     	
         //	ifLogin = true;
@@ -102,6 +119,8 @@ public class StringCheesePizzeria extends Application
         centerPane2.setVgap(10);
         //Label
         Label type = new Label("Pick a Pizza Type");
+        type.setTextFill(Color.RED);
+        type.setFont(new Font("Cambria", 17));
         centerPane2.add(type, 1, 0);
  
         TilePane eastPane2 = new TilePane(Orientation.VERTICAL);
@@ -111,7 +130,8 @@ public class StringCheesePizzeria extends Application
     	TilePane topPane2 = new TilePane(Orientation.HORIZONTAL);
     	eastPane2.setAlignment(Pos.CENTER);
         eastPane2.setPadding(new Insets(20, 20, 20, 20));
-       
+        
+           
            Button cheese = new Button("Cheese");
            Button veggie = new Button("Veggie");
            Button pepperoni = new Button("Pepperoni");
@@ -142,6 +162,7 @@ public class StringCheesePizzeria extends Application
     	
         backToLogin.setOnAction((ActionEvent f) -> { 
         	primaryStage.setScene(scene1);
+        	
         });
         
         nextToTop.setOnAction((ActionEvent g) -> { 
@@ -205,6 +226,7 @@ public class StringCheesePizzeria extends Application
         	    backToType.setOnAction((ActionEvent h) -> { 
         	    	
                 	primaryStage.setScene(scene2);
+                	
                 });
         	    
         	    toCheck.setOnAction((ActionEvent j) -> {
@@ -282,7 +304,8 @@ public class StringCheesePizzeria extends Application
         	    	   centerPane4.add(lNameField1, 3, 5);
         	    	   centerPane4.add(lNameField2, 3, 6);
         	    	   centerPane4.add(lNameField3, 3, 7);
-			   
+
+        	    	 
         	    	    centerPane4.add(TotalPrice, 2, 9);
         	    	    centerPane4.add(TotalPriceField, 2, 10);
 
@@ -322,9 +345,12 @@ public class StringCheesePizzeria extends Application
         	    	    goBack.setOnAction((ActionEvent k) -> {
         	    	    	
         	    	    	primaryStage.setScene(scene3);
+        	    	    	
         	    	    });
         	    	    
         	    	    confirm.setOnAction((ActionEvent m) -> {
+        	    	    	
+       
         	    	    	
         	    	    //	if (signLater.setOnAction(ActionEvent q)) {
         	
@@ -425,20 +451,26 @@ public class StringCheesePizzeria extends Application
         	    	        back.setOnAction((ActionEvent n) -> { 
         	    	        	
         	    	        	primaryStage.setScene(scene4);
+        	    	        	
         	    	        });
         	    	        
         	    	        logOut.setOnAction((ActionEvent p) -> {
         	    	        	
         	    	        	primaryStage.setScene(scene1);
+        	    	        	
         	    	        });
+        	    	    	
         	    	    	
         	    	    });
         	    	
-        	    });    
+        	    });
+        	    
         });
     	
     });
-  
+    
+    
+    
   }
   
   
