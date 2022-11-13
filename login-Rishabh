@@ -18,22 +18,21 @@ public class NestedPaneDemoTwo extends Application
 {
   public void start(Stage primaryStage)
   {
-    //Create a border pane as the root
-    BorderPane rootPane = new BorderPane();
+    BorderPane rootPane1 = new BorderPane();
 
-    //centerPane is a GridPane, it contains 3 labels and 3 text fields
-    GridPane centerPane = new GridPane();
-	centerPane.setAlignment(Pos.CENTER);
-    centerPane.setPadding(new Insets(10, 10, 10, 10));
-    centerPane.setHgap(5);
-    centerPane.setVgap(10);
+    //centerPane1 is a GridPane, it contains 3 labels and 3 text fields
+    GridPane centerPane1 = new GridPane();
+	centerPane1.setAlignment(Pos.CENTER);
+    centerPane1.setPadding(new Insets(10, 10, 10, 10));
+    centerPane1.setHgap(5);
+    centerPane1.setVgap(10);
 
 	//Create 3 labels
     Label Username = new Label("USERNAME");
     Label Password = new Label("PASSWORD");
     Label Welcome = new Label("WELCOME TO STRING CHEESE PIZZERIA");
 
-    Welcome.setFont(new Font("Arial", 30));
+    Welcome.setFont(new Font("Arial", 20));
     Welcome.setTextFill(Color.RED);
     
     //Create 3 text fields
@@ -41,44 +40,49 @@ public class NestedPaneDemoTwo extends Application
     TextField PassField = new TextField();
 
    	//add the 3 labels and 3 text fields accordingly
-    centerPane.add(Username, 0, 4);
-    centerPane.add(UsernameField, 0, 5);
-    centerPane.add(Password, 0, 6);
-    centerPane.add(PassField, 0, 7);
-    centerPane.add(Welcome,0, 0);
+    centerPane1.add(Username, 0, 4);
+    centerPane1.add(UsernameField, 0, 5);
+    centerPane1.add(Password, 0, 6);
+    centerPane1.add(PassField, 0, 7);
+    centerPane1.add(Welcome,0, 0);
 
- 	//eastPane is a vertical TilePane, it contains 4 buttons
-	TilePane eastPane = new TilePane(Orientation.VERTICAL);
-	eastPane.setAlignment(Pos.CENTER);
-    eastPane.setPadding(new Insets(10, 10, 10, 10));
+ 	//eastPane1 is a vertical TilePane, it contains 4 buttons
+	TilePane eastPane1 = new TilePane(Orientation.VERTICAL);
+	eastPane1.setAlignment(Pos.CENTER);
+    eastPane1.setPadding(new Insets(10, 10, 10, 10));
 
- 	//southPane is a horizontal TilePane, it contains 3 buttons
-	TilePane southPane = new TilePane(Orientation.HORIZONTAL);
-	southPane.setAlignment(Pos.CENTER);
+ 	//southPane1 is a horizontal TilePane, it contains 3 buttons
+	TilePane southPane1 = new TilePane(Orientation.HORIZONTAL);
+	southPane1.setAlignment(Pos.CENTER);
 
     //create three buttons
-    Button button5 = new Button("Login");
-    Button button6 = new Button("Sign-In Later");
+    Button Login = new Button("Login");
+    Button signLater = new Button("Sign-In Later");
 
 	//To enable the buttons to be resized to the size of the tile,
-    button5.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-	button6.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+    Login.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+	signLater.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
 	//set the horizontal gap between above 3 buttons
-	southPane.setHgap(20.0);
-	southPane.getChildren().addAll(button5,button6);
-    southPane.setPadding(new Insets(10, 10, 10, 10));
+	southPane1.setHgap(20.0);
+	southPane1.getChildren().addAll(Login,signLater);
+    southPane1.setPadding(new Insets(10, 10, 10, 10));
+    
+    Label error = new Label("Please input a valid ASU username and password, or click 'Sign-In Later' ");
 
-    //Place centerPane, eastPane and southPane inside the rootPane
-    rootPane.setCenter(centerPane);
-    rootPane.setRight(eastPane);
-    rootPane.setBottom(southPane);
+    //Place centerPane1, eastPane1 and southPane1 inside the rootPane1
+    rootPane1.setCenter(centerPane1);
+    rootPane1.setRight(eastPane1);
+    rootPane1.setBottom(southPane1);
+    
+    
 
     // Create a scene and place it in the stage
-    Scene scene = new Scene(rootPane, 500, 600);
+    Scene scene1 = new Scene(rootPane1, 500, 600);
     primaryStage.setTitle("Nest Pane Demo"); // Set the stage title
-    primaryStage.setScene(scene); // Place the scene in the stage
+    primaryStage.setScene(scene1); // Place the scene in the stage
     primaryStage.show(); // Display the stage
+    
   }
   
   
