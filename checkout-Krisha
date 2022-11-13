@@ -50,7 +50,7 @@ public class NestedPaneDemoTwo extends Application
     //label.setMinWidth(50);
     //label.setMinHeight(50);
 
-    checkout.setFont(new Font("Arial", 30));
+    checkout.setFont(new Font("Arial", 25));
     OrderSum.setFont(new Font("Cambria", 20));
     
 
